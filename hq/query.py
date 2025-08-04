@@ -226,10 +226,11 @@ class QueryEngine:
         if isinstance(element, list):
             results = []
             for el in element:
-                results.extend(self._get_by_attribute_exists(el, attr_name))
+                if isinstance(el, Tag) and el.has_attr(attr_name):
+                    results.append(el)
             return results
         elif isinstance(element, (Tag, BeautifulSoup)):
-            return element.find_all(attrs={attr_name: True})
+            return element.find_all(lambda tag: tag.has_attr(attr_name) if hasattr(tag, 'has_attr') else False)
         else:
             return []
     
