@@ -15,7 +15,7 @@ A command-line HTML processor inspired by `jq`. Parse and extract data from HTML
 ## Installation
 
 ```bash
-pip install -e .
+pip install hq-html
 ```
 
 ## Usage
