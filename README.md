@@ -171,6 +171,47 @@ While `jq` is excellent for JSON, there wasn't a similar tool for HTML. `hq` fil
 - **Beautiful output**: Syntax-highlighted, properly formatted results
 - **Flexible querying**: From simple tag extraction to complex nested selections
 
+## Development
+
+### Setting up the development environment
+
+```bash
+# Clone the repository
+git clone https://github.com/Julestblt/hq.git
+cd hq
+
+# Install in development mode
+pip install -e .[dev]
+
+# Run tests
+pytest
+
+# Run quality checks
+black --check .
+flake8 .
+mypy hq/
+isort --check-only .
+```
+
+### Versioning and Releases
+
+This project uses automated versioning and publishing:
+
+- **Automatic releases**: Every push to `main` automatically bumps the patch version, creates a git tag, and publishes to PyPI
+- **Manual releases**: Use the "Manual Version Bump" GitHub Action to bump major/minor versions
+- **Version management**: Uses `bump2version` to keep version numbers in sync across files
+
+The version is automatically updated in:
+- `pyproject.toml`
+- `hq/__init__.py`
+- `.bumpversion.cfg`
+
+### CI/CD Pipeline
+
+- **Tests**: Run on Python 3.9, 3.10, 3.11, and 3.12
+- **Quality checks**: Black, Flake8, MyPy, and isort
+- **Automated publishing**: On successful tests, packages are built and published to PyPI
+
 ## License
 
 MIT
