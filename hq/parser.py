@@ -2,23 +2,22 @@
 HTML parser using BeautifulSoup
 """
 
-from typing import Any
-from bs4 import BeautifulSoup, Tag
+from bs4 import BeautifulSoup
 
 
 class HtmlParser:
     """Parser to convert HTML into a manipulable structure"""
-    
+
     def __init__(self) -> None:
-        self.parser = 'lxml'
-    
+        self.parser = "lxml"
+
     def parse(self, html_content: str) -> BeautifulSoup:
         """
         Parse HTML content and return a BeautifulSoup object
-        
+
         Args:
             html_content: The HTML content to parse
-            
+
         Returns:
             BeautifulSoup object
         """
@@ -28,18 +27,18 @@ class HtmlParser:
         except Exception as e:
             # Fallback to built-in HTML parser
             try:
-                soup = BeautifulSoup(html_content, 'html.parser')
+                soup = BeautifulSoup(html_content, "html.parser")
                 return soup
             except Exception:
                 raise ValueError(f"Unable to parse HTML: {e}")
-    
+
     def is_valid_html(self, html_content: str) -> bool:
         """
         Check if content is valid HTML
-        
+
         Args:
             html_content: The content to verify
-            
+
         Returns:
             True if HTML is valid
         """
